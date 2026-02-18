@@ -40,3 +40,6 @@ console.log(hasUsersUnder30); // Salida: true
 const allUsersOver20 = users.every(user => user.age > 20);
 console.log(allUsersOver20); // Salida: true
 
+//Ejemplo de uso de forEach para convertir los nombres de los usuarios a mayúsculas
+//Funciona igual que el método ForEach() en C#, ejecutando una función para cada elemento del array, en este caso modificando la propiedad name de cada objeto para convertirla a mayúsculas.
+users.forEach(user => user.name = user.name.toUpperCase());
