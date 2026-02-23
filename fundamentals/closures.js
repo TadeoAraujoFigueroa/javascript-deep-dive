@@ -102,3 +102,16 @@ carrito.eliminarItem("Manzana");
 console.log(carrito.obtenerItems()); // Salida: ["Banana"]  
 carrito.eliminarItem("Naranja"); // No se encuentra el item, no se elimina nada
 console.log(carrito.obtenerItems()); // Salida: ["Banana"]
+
+//IIFE
+//Una IIFE (Immediately Invoked Function Expression) es una función que se define y se ejecuta inmediatamente después de su creación. Se utiliza para crear un ámbito local y evitar la contaminación del espacio de nombres global. 
+// Las IIFE son útiles para encapsular código y proteger variables y funciones de ser accedidas desde el exterior.
+for (var i = 0; i < 5; i++)
+    {
+        ((j) => {
+            setTimeout()(() => console.log(j), 1000);
+        })(i)
+        
+    }
+//En este ejemplo, dentro de cada ejecución del bucle for se ejecutará la función anónima que recibe como parámetro el valor de 'i' en cada repetición.
+//De esta manera, evitamos el problema de que la variable 'i' sea compartida entre todas las funciones de setTimeout, lo que resultaría en que todas las funciones imprimieran el mismo valor (5) después de 1 segundo. En cambio, cada función de setTimeout imprimirá el valor correcto de 'i' en cada iteración del bucle.
