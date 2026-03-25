@@ -6,6 +6,15 @@ const users = [
     {id: 4, name: "Eduardo", active: false},
 ];
 
+//creating an indexed data structure form an existing collection
+//now we can search specific users faster
+const usersById = users.reduce((acc, user)=>
+    {
+        acc[user.id] = user;
+        return acc;
+    }, {})
+
+//and we can do the same with products
 const products = [
     {id: 1, name: 'Keyboard', price: 100},
     {id: 2, name: 'Guitar', price: 200},
@@ -14,6 +23,11 @@ const products = [
     {id: 5, name: 'Flute', price: 500},
     {id: 6, name: 'Oboe', price: 600},
 ];
+
+const productsById = products.reduce((acc, product)=> {
+    acc[product.id] = product;
+    return acc;
+}, {});
 
 const orders = [
     {id: 1, userId: 1, productsIds: [1, 2], paid: true},
@@ -63,12 +77,13 @@ console.log("Total: ", total);
 const product_orders_2 = order.productsIds.map(pId => products.find(p => p.id == pId));
 const total_2 = product_orders_2.reduce((acc, p) => acc + p.price, 0);
 console.log("Total: ", total_2);
+
 //Changing the orders format
 const new_orders = orders.map(o => {
 
-    const user = users.find(u => u.id = o.userId);
+    const user = usersById[o.userId];
      
-    const orderProducts = o.productsIds.map(pId => products.find(p => p.id == pId));
+    const orderProducts = o.productsIds.map(pId => productsById[pId]);
 
     return {
         id: o.id,
