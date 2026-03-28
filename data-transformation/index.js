@@ -81,9 +81,9 @@ console.log("Total: ", total_2);
 //Changing the orders format
 const new_orders = orders.map(o => {
 
-    const user = usersById[o.userId];
+    const user = users.find(u => u.id = o.userId);
      
-    const orderProducts = o.productsIds.map(pId => productsById[pId]);
+    const orderProducts = o.productsIds.map(pId => products.find(p => p.id == pId));
 
     return {
         id: o.id,
@@ -108,3 +108,8 @@ console.log("New enriched user: ", enriched_user);
 //Using 'destructuring'
 const {id, name, mail} = enriched_user;
 console.log("Enriched user destructuring data: ", "Id: " + id + " Name: " + name + " Mail: " + mail);
+const arr = [1, 2, 3];
+
+const result = arr.map(x => {
+  if (x > 1) return x * 2;
+});
